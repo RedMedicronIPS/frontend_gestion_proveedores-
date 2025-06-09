@@ -1,12 +1,11 @@
-import { useAppSelector, useAppDispatch } from "../store/hooks";
-import type { RootState } from "../store/store";
-import { logout } from "../features/auth/authSlice";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { logout } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function Topbar() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const user = useAppSelector((state: RootState) => state.auth.user);
+  const user = useAppSelector((state) => state.auth.user);
 
   const handleLogout = () => {
     dispatch(logout());

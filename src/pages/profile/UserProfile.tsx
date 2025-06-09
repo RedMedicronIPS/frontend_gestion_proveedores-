@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useAppSelector, useAppDispatch } from "../store/hooks";
-import { updateUser } from "../features/auth/authSlice";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { updateUser } from "../../features/auth/authSlice";
+import { authService } from "../../services/auth/auth.service";
 import { toast } from "react-toastify";
 
 export default function UserProfile() {

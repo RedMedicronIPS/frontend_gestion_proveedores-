@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
+import Loading from "../components/common/Loading"; // Esta importación ahora funcionará
 
 interface Props {
   children: React.ReactNode;
@@ -10,11 +11,7 @@ export function PrivateRoute({ children, roles }: Props) {
   const { token, user, loading } = useAppSelector((state) => state.auth);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (!token) {

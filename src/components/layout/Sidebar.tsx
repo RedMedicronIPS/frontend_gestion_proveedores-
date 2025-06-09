@@ -1,8 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
-import { useAppSelector, useAppDispatch } from "../store/hooks";
-import { logout } from "../features/auth/authSlice";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { logout } from "../../features/auth/authSlice";
 import { HiHome, HiUser, HiCog, HiLogout } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const user = useAppSelector((state) => state.auth.user);

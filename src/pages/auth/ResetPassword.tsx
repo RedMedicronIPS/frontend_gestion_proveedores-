@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { authService } from "../services/auth.service";
+import { authService } from "../../services/auth/auth.service"; // Corregir ruta
 import { toast } from "react-toastify";
 
 export default function ResetPassword() {
@@ -18,7 +18,7 @@ export default function ResetPassword() {
     }
 
     try {
-      await authService.confirmResetPassword(token!, form.password);
+      await authService.confirmPasswordReset(token!, form.password);
       toast.success("Contraseña restablecida correctamente");
       navigate("/login");
     } catch (error) {

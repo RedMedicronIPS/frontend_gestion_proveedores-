@@ -2,15 +2,17 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useAppDispatch } from "./store/hooks";
 import { checkAuth } from "./features/auth/authSlice";
-import Login from "./pages/Login";
-import ForgotPassword from "./pages/ForgotPassword";
-import ResetPassword from "./pages/ResetPassword";
-import Dashboard from "./pages/Dashboard";
-import AdminPanel from "./pages/AdminPanel";
-import UserProfile from "./pages/UserProfile";
-import MainLayout from "./layout/MainLayout";
+// Corregir rutas de importación
+import Login from "./pages/auth/Login";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
+import Dashboard from "./pages/dashboard/Dashboard";
+import AdminPanel from "./pages/admin/AdminPanel";
+import UserProfile from "./pages/profile/UserProfile";
+import MainLayout from "./components/layout/MainLayout";
 import { PrivateRoute } from "./router/PrivateRoute";
 import Unauthorized from "./pages/Unauthorized";
+import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -48,7 +50,7 @@ export default function App() {
           />
         </Route>
         <Route path="/unauthorized" element={<Unauthorized />} />
-        <Route path="*" element={<div>404 - Página no encontrada</div>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

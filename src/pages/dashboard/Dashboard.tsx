@@ -1,4 +1,4 @@
-import { useAppSelector } from "../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 import { HiUsers, HiDocumentText, HiChartBar, HiClock } from "react-icons/hi";
 
 export default function Dashboard() {
