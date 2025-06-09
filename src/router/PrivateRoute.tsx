@@ -1,21 +1,29 @@
 import { Navigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
-import type { JSX } from "react";
-import type { RootState } from "../store/store";
 
 interface Props {
-  children: JSX.Element;
-  roles?: string[]; // ejemplo: ['admin']
+  children: React.ReactNode;
+  roles?: string[];
 }
 
-export const PrivateRoute = ({ children, roles }: Props) => {
-  const auth = useAppSelector((state: RootState) => state.auth);
+export function PrivateRoute({ children, roles }: Props) {
+  const { token, user, loading } = useAppSelector((state) => state.auth);
 
-  if (!auth.token) return <Navigate to="/login" />;
-
-  if (roles && !roles.includes(auth.user?.role)) {
-    return <Navigate to="/unauthorized" />;
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      </div>
+    );
   }
 
-  return children;
-};
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (roles && !roles.includes(user?.role || "")) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return <>{children}</>;
+}

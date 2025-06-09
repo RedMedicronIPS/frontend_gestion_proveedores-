@@ -21,7 +21,7 @@ export default function Sidebar() {
   return (
     <aside className="w-72 bg-white border-r border-gray-200 flex flex-col">
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-primary-600">GestiónApp</h1>
+        <h1 className="text-2xl font-bold text-primary-600">Gestión Proveedores</h1>
       </div>
       
       <div className="px-4 py-6 border-y border-gray-200">
